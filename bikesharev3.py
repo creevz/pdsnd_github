@@ -200,6 +200,7 @@ def show_data(df):
 
 
 def main():
+    #exception added to cover input errors in get_filters
     while True:
         city, month, day = get_filters()
         try:
