@@ -4,10 +4,10 @@
 8/3/2021
 
 ### Project Title
-Replace the Project Title
+Exploring Bikeshare Data
 
 ### Description
-Describe what your project is about and what it does
+This python program asks for user input and presents summarized information from Bikeshare data from Chicago, New York City, and Washington. 
 
 ### Files used
 Include the files used
