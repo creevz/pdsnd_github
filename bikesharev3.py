@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 from pprint import pprint
+from tabulate import tabulate
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -136,12 +137,12 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # TO DO: display total travel time
-    total = format((df['Trip Duration'].sum())/60, ".2f")
-    print('The total travel time was: ', total, ' minutes. \n')
+    total = format((df['Trip Duration'].sum())/3600, ".2f")
+    print('The total travel time was: ', total, ' hours. \n')
 
     # TO DO: display mean travel time
-    mean = format((df['Trip Duration'].mean())/60, ".2f")
-    print('The mean travel time was: ', mean, ' minutes. \n')
+    mean = format((df['Trip Duration'].mean())/3600, ".2f")
+    print('The mean travel time was: ', mean, ' hours. \n')
 
     print("\nThis took %s seconds." % format((time.time() - start_time),".2f"))
     print('-'*40, '\n')
@@ -183,19 +184,13 @@ def user_stats(df):
 
 
 def show_data(df):
-    start_row = 0
-    show_data = 'yes'
 
-    while show_data == 'yes':
+    while True:
         show_data = input('\nWould you like to see some raw data? (yes or no) \n')
-        if show_data.lower() == 'yes':
-            result_df = (df.iloc[start_row:start_row+5, : ])
-            #https://pythontic.com/pandas/serialization/dictionary
-            result = result_df.to_dict(orient="index")
-            pprint(result)
-            start_row += 5+1
-        else:
+        if show_data.lower() != 'yes':
             break
+        print(tabulate(df.iloc[np.arange(0+i,5+i)], headers ="keys"))
+        i+=5
     print('-'*40, '\n')
 
 
