@@ -158,6 +158,7 @@ def user_stats(df):
     print('The distribution of user counts:\n', user_counts, '\n')
 
     # TO DO: Display counts of gender
+    # Added exception to account for different file formats
     try:
         gender_counts = df['Gender'].value_counts()
     except:
