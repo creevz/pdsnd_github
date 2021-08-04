@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 from pprint import pprint
+from tabulate import tabulate
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -182,19 +183,13 @@ def user_stats(df):
 
 
 def show_data(df):
-    start_row = 0
-    show_data = 'yes'
 
-    while show_data == 'yes':
+    while True:
         show_data = input('\nWould you like to see some raw data? (yes or no) \n')
-        if show_data.lower() == 'yes':
-            result_df = (df.iloc[start_row:start_row+5, : ])
-            #https://pythontic.com/pandas/serialization/dictionary
-            result = result_df.to_dict(orient="index")
-            pprint(result)
-            start_row += 5+1
-        else:
+        if show_data.lower() != 'yes':
             break
+        print(tabulate(df.iloc[np.arange(0+i,5+i)], headers ="keys"))
+        i+=5
     print('-'*40, '\n')
 
 
